@@ -7,6 +7,10 @@ const Post = props => {
   // 🔥 Make sure the parent of Post is passing the right props!
   const { post, likePost } = props;
 
+  const likePostHandler = () => {
+    likePost(post.id);
+  }
+
   return (
     <div className='post-border'>
       <PostHeader
@@ -21,9 +25,9 @@ const Post = props => {
         />
       </div>
       {/* Is LikeSection getting all the props it needs to work correctly? */}
-      <LikeSection likePost={() => likePost(post.id)} />
+      <LikeSection likePost={likePostHandler} numberOfLikes={post.likes} />
       {/* Comments also wants its props! */}
-      <Comments />
+      <Comments comments={post.comments}/>
     </div>
   );
 };
